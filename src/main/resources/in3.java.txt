@@ -1,0 +1,18 @@
+package xyz;
+
+import abc.def.Abc;
+import com.google.common.future.ListenableFuture;
+import com.google.promisegraph.Promise;
+
+final class Xyz {
+    private final AccountDao accountDao;
+
+    @Inject
+    Xyz(AccountDao accountDao) {
+        this.accountDao = accountDao;
+    }
+
+    public Promise<ImmutableList<String>> getImportantAccountNumbers() {
+        return accountDao.listAccounts(IMPORTANT).then(PromiseUtilities.map(Account::getNumber));
+    }
+}

@@ -1,0 +1,26 @@
+package xyz;
+
+import abc.def.Abc;
+import com.google.common.future.ListenableFuture;
+
+@ThreadSafe
+final class Xyz extends Delayed_Abc {
+    private final AccountDao accountDao;
+
+    @Inject
+    Xyz(AccountDao accountDao) {
+        this.accountDao = accountDao;
+    }
+
+    public ListenableFuture<ImmutableList<String>> getImportantAccountNumbers() {
+        return extractNumbers(getImportantAccounts());
+    }
+
+    ImmutableList<Account> getImportantAccounts() {
+        return accountDao.listAccounts(IMPORTANT);
+    }
+
+    @VisibleForDelayed ImmutableList<String> extractNumbers(@Delayed ImmutableList<Account> accounts) {
+        return accounts.stream().map(Account::getNumber).collect(toImmutableList());
+    }
+}

@@ -1,0 +1,7 @@
+package xyz
+
+import abc.def.Abc
+
+class Xyz @Inject constructor(private val accountDao: AccountDao) {
+    public suspend fun getImportantAccountNumbers(): List<String> = accountDao.listAccounts(IMPORTANT).map { it.number }
+}

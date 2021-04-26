@@ -1,0 +1,22 @@
+package xyz;
+
+import abc.def.Abc;
+import com.google.common.future.ListenableFuture;
+
+final class Xyz implements ProducerModule {
+    private final AccountDao accountDao;
+
+    @Inject
+    Xyz(AccountDao accountDao) {
+        this.accountDao = accountDao;
+    }
+
+    public ImmutableList<String> getImportantAccountNumbers(@Node ImmutableList<Account> importantAccounts) {
+        return importantAccounts.stream().map(Account::getNumber).collect(toImmutableList());
+    }
+
+    @Produces
+    ListenableFuture<ImmutableList<Account>> getImportantAccounts() {
+        return accountDao.listAccounts(IMPORTANT);
+    }
+}
