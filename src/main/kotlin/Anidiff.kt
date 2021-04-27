@@ -6,7 +6,6 @@ import java.awt.Graphics
 import java.io.BufferedReader
 import java.io.FileInputStream
 import java.io.InputStreamReader
-import java.util.*
 import javax.swing.JFrame
 import javax.swing.JPanel
 import javax.swing.Timer
@@ -35,7 +34,7 @@ fun main(args: Array<String>) {
             frameNumber++
         }
     }
-    Timer(200) { _ -> frame.contentPane.repaint() }.apply {
+    Timer(200) { frame.contentPane.repaint() }.apply {
         isRepeats = true
         start()
     }
